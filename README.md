@@ -1,5 +1,5 @@
 # Qué hace meneaRme
-MeneaRme es un web scraper en R para el agregador de enlaces meneame.net. Proporcionándole una serie de argumentos devolverá un csv con los siguientes campos:
+MeneaRme es un web scraper en R para el agregador de enlaces meneame.net. Proporcionándole unos pocos argumentos devolverá un csv con los siguientes campos:
 
 - Fecha
 - Titular
