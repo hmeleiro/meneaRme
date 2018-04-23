@@ -31,7 +31,7 @@ submeneame <- function(sub, paginas, ruta = "~/extraccion.csv") {
   urls <- paste0("https://www.meneame.net/m/", sub, "?page=", pags)
 
   line <- data.frame("fecha", "titular", "entradilla", "meneos", "clics", "comments", "positivos", "negativos", "anonimos", "karma", "user", "links")
-  write_csv(x = line, append = FALSE, path = "data/extraccion.csv", col_names = FALSE)
+  write_csv(x = line, append = FALSE, path = ruta, col_names = FALSE)
 
   for (url in urls){
     x <- GET(url, add_headers('user-agent' = desktop_agents[sample(1:10, 1)]))

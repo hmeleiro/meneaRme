@@ -39,7 +39,7 @@ busca <- function(palabra, paginas, ruta = "~/extraccion.csv") {
 
 
   line <- data.frame("fecha", "titular", "entradilla", "meneos", "clics", "comments", "positivos", "negativos", "anonimos", "karma", "user", "subname", "links")
-  write_csv(x = line, append = FALSE, path = "data/extraccion.csv", col_names = FALSE)
+  write_csv(x = line, append = FALSE, path = ruta, col_names = FALSE)
 
   for (url in urls){
     x <- GET(url, add_headers('user-agent' = desktop_agents[sample(1:10, 1)]))
