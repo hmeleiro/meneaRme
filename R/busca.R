@@ -1,6 +1,6 @@
 #' Scrapea las entradas resultantes de una búsqueda en meneame.com
 #'
-#' @param sub Character. Palabra que se quiere buscar en meneame.com que se quiere scrapear.
+#' @param palabra Character. Palabra(s) que se quiere buscar en meneame.net para scrapear. Importante no introducir más de un espacio entre palabras.
 #' @param paginas Numeric. Número de páginas que se quieren scraper de los resultados de la búsqueda. Como máximo 40.
 #' @param ruta Character. Ruta en el ordenador donde se quiere el csv.
 #'
