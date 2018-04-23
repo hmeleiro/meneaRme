@@ -84,7 +84,7 @@ busca <- function(palabra, paginas, ruta = "~/extraccion.csv") {
 
     try(line <- data.frame(fecha, titulares, entradilla, meneos, clics, comments, positivos, negativos, anonimos, karma, user, subname, links))
     print(head(line))
-    write_csv(x = line, append = TRUE, path = "data/extraccion.csv", col_names = FALSE)
+    write_csv(x = line, append = TRUE, path = ruta, col_names = FALSE)
 
 
     Sys.sleep(sample(x = 1:3, size = 1))  ## Duerme entre uno y tres segundos entre página y página
