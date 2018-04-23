@@ -11,10 +11,10 @@ submeneame(sub, paginas, ruta = "~/extraccion.csv")
 
 \item{paginas}{Numeric. Número de páginas que se quieren scraper. No pone más de la que haya.}
 
-\item{ruta}{}
+\item{ruta}{Character. Ruta en el ordenador donde se quiere el csv.}
 }
 \value{
-A csv
+Un csv que se guarda en la ruta indicada.
 }
 \description{
 Scrapea las entradas en un sub de meneame.com

@@ -9,12 +9,12 @@ busca(palabra, paginas, ruta = "~/extraccion.csv")
 \arguments{
 \item{paginas}{Numeric. Número de páginas que se quieren scraper de los resultados de la búsqueda. Como máximo 40.}
 
-\item{ruta}{}
+\item{ruta}{Character. Ruta en el ordenador donde se quiere el csv.}
 
 \item{sub}{Character. Palabra que se quiere buscar en meneame.com que se quiere scrapear.}
 }
 \value{
-A csv
+Un csv que se guarda en la ruta indicada.
 }
 \description{
 Scrapea las entradas resultantes de una búsqueda en meneame.com

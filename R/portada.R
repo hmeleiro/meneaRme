@@ -1,9 +1,9 @@
 #' Scrapea las entradas en la portada de meneame.com
 #'
-#' @param paginas Numeric. Número de páginas que se quieren scraper. No pone más de la que haya.
-#' @param ruta
+#' @param paginas Numeric. Número de páginas que se quieren scraper. No poner más de las que haya.
+#' @param ruta Character. Ruta en el ordenador donde se quiere el csv.
 #'
-#' @return A csv
+#' @return Un csv que se guarda en la ruta indicada.
 #' @export
 portada <- function(paginas, ruta = "~/extraccion.csv") {
   library(stringr)

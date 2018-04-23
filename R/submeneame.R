@@ -2,9 +2,9 @@
 #'
 #' @param sub Character. Sub de meneame.com que se quiere scrapear.
 #' @param paginas Numeric. Número de páginas que se quieren scraper. No pone más de la que haya.
-#' @param ruta
+#' @param ruta Character. Ruta en el ordenador donde se quiere el csv.
 #'
-#' @return A csv
+#' @return Un csv que se guarda en la ruta indicada.
 #' @export
 submeneame <- function(sub, paginas, ruta = "~/extraccion.csv") {
   start <- Sys.time()
