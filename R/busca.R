@@ -10,7 +10,7 @@ busca <- function(palabra, paginas, ruta = "~/extraccion.csv") {
   start <- Sys.time()
 
   if (paginas > 40) {
-    print("Error: Meneame.com solo ofrece 40 páginas como máximo.")
+    stop("meneame.net ofrece 40 páginas como máximo.")
   }
 
   library(stringr)
