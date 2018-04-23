@@ -77,7 +77,7 @@ submeneame <- function(sub, paginas, ruta = "~/extraccion.csv") {
     write_csv(x = line, append = TRUE, ruta, col_names = FALSE)
 
 
-    Sys.sleep(sample(x = 1:3, size = 1))  ## Duerme entre uno y tres segundos entre página y página
+    Sys.sleep(sample(x = 1:2, size = 1))  ## Duerme entre uno y tres segundos entre página y página
 
   }
 

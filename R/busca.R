@@ -80,8 +80,8 @@ busca <- function(palabra, paginas, ruta = "~/extraccion.csv") {
     fecha <- as.numeric(fecha)
     fecha <- as.POSIXct(fecha, origin = "1970-01-01")
 
-    if (length(fecha) != 25) {
-      fecha <- fecha[1:25]
+    if (length(fecha) != length(titulares)) {
+      fecha <- fecha[1:length(titulares)]
     }
 
     try(line <- data.frame(fecha, titulares, entradilla, meneos, clics, comments, positivos, negativos, anonimos, karma, user, subname, links))
@@ -89,7 +89,7 @@ busca <- function(palabra, paginas, ruta = "~/extraccion.csv") {
     write_csv(x = line, append = TRUE, path = ruta, col_names = FALSE)
 
 
-    Sys.sleep(sample(x = 1:3, size = 1))  ## Duerme entre uno y tres segundos entre página y página
+    Sys.sleep(sample(x = 1:2, size = 1))  ## Duerme entre uno y tres segundos entre página y página
 
   }
 

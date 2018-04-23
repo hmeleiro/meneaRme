@@ -79,7 +79,7 @@ portada <- function(paginas, ruta = "~/extraccion.csv") {
     print(head(line))
     write_csv(x = line, append = TRUE, path = ruta, col_names = FALSE)
 
-    Sys.sleep(sample(x = 1:3, size = 1))
+    Sys.sleep(sample(x = 1:2, size = 1))
 
   }
 
