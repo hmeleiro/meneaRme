@@ -31,6 +31,8 @@ busca <- function(palabra, paginas, ruta = "~/extraccion.csv") {
 
 
 
+  palabra <- str_replace(palabra, " ", "+")
+
   pags <- 1:paginas
   relevantes <- paste0("https://www.meneame.net/search?page=", pags,"&q=", palabra, "&w=links&p=&s=&h=&o=&u=")
   porfecha <- paste0("https://www.meneame.net/search?page=", pags,"&q=", palabra, "&w=links&p=&s=&h=&o=date&u=")
