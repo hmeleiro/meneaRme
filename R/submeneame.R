@@ -108,7 +108,7 @@ submeneame <- function(sub, paginas, ruta = "~/meneame.csv") {
   }
 
 
-  meneos <<- read_csv(ruta)
+  try(meneos <<- read_csv(ruta))
 
   stop <- Sys.time()
 

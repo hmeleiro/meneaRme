@@ -109,9 +109,11 @@ portada <- function(paginas, ruta = "~/meneame.csv") {
     print(head(line))
     try(write_csv(x = line, append = TRUE, path = ruta, col_names = FALSE))
 
+    Sys.sleep(sample(x = 1:2, size = 1))  ## Duerme entre uno y tres segundos entre página y página
+
   }
 
-  meneos <<- read_csv(ruta)
+  try(meneos <<- read_csv(ruta))
 
 
   stop <- Sys.time()

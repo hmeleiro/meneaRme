@@ -13,6 +13,7 @@ MeneaRme es un web scraper en R para el agregador de enlaces meneame.net. Propor
 - Karma
 - Comentarios
 - Nombre del usuario que ha compartido el contenido
+- Web de origen
 - El sub del que forma parte el contenido 
 - El link al contenido
 
