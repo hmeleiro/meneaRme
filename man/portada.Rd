@@ -4,12 +4,12 @@
 \alias{portada}
 \title{Scrapea las entradas en la portada de meneame.com}
 \usage{
-portada(paginas, ruta = "~/extraccion.csv")
+portada(paginas, ruta = "~/meneame.csv")
 }
 \arguments{
 \item{paginas}{Numeric. Número de páginas que se quieren scraper. No poner más de las que haya.}
 
-\item{ruta}{Character. Ruta en el ordenador donde se quiere el csv.}
+\item{ruta}{Character. Ruta en el ordenador donde se quiere el csv. Por defecto se guardará un csv llamado meneame.csv en el directorio de trabajo.}
 }
 \value{
 Un csv que se guarda en la ruta indicada.

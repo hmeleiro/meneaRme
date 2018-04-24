@@ -2,17 +2,30 @@
 #'
 #' @param sub Character. Sub de meneame.com que se quiere scrapear.
 #' @param paginas Numeric. Número de páginas que se quieren scraper. No pone más de la que haya.
-#' @param ruta Character. Ruta en el ordenador donde se quiere el csv.
+#' @param ruta Character. Ruta en el ordenador donde se quiere el csv. Por defecto se guardará un csv llamado meneame.csv en el directorio de trabajo.
 #'
 #' @return Un csv que se guarda en la ruta indicada.
+#' @import stringr
+#' @import rvest
+#' @import httr
+#' @importFrom  readr write_csv
+#' @importFrom readr read_csv
+#' @import utils
+#' @import xml2
 #' @export
-submeneame <- function(sub, paginas, ruta = "~/extraccion.csv") {
+submeneame <- function(sub, paginas, ruta = "~/meneame.csv") {
   start <- Sys.time()
 
-  library(stringr)
-  library(rvest)
-  library(httr)
-  library(readr)
+  if (paginas < 1) {
+    stop("Error: Es imposible scrapear menos de una página. Voy a hacer como si me hubieses pedido una sola.")
+  }
+
+
+  #require(stringr)
+  #require(rvest)
+  #require(httr)
+  #require(readr)
+  #require(xml2)
 
   desktop_agents <-  c('Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/54.0.2840.99 Safari/537.36',
                        'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/54.0.2840.99 Safari/537.36',
@@ -30,7 +43,7 @@ submeneame <- function(sub, paginas, ruta = "~/extraccion.csv") {
   pags <- 1:paginas
   urls <- paste0("https://www.meneame.net/m/", sub, "?page=", pags)
 
-  line <- data.frame("fecha", "titular", "entradilla", "meneos", "clics", "comments", "positivos", "negativos", "anonimos", "karma", "user", "links")
+  line <- data.frame("fecha", "titular", "entradilla", "meneos", "clics", "comments", "positivos", "negativos", "anonimos", "karma", "user", "medio", "subname", "links")
   write_csv(x = line, append = FALSE, path = ruta, col_names = FALSE)
 
   for (url in urls){
@@ -63,7 +76,7 @@ submeneame <- function(sub, paginas, ruta = "~/extraccion.csv") {
     user <-  x %>% read_html() %>% html_nodes(".news-submitted a") %>% html_text()
     user <- user[user != ""]
 
-    fecha <- x %>% read_html() %>% html_nodes(".news-submitted .visible") %>% html_attr(name = "data-ts")
+    fecha <- x %>% read_html() %>% html_nodes(".promoted-article .visible , .showmytitle+ .visible") %>% html_attr(name = "data-ts")
     fecha <- fecha[fecha != ""]
     fecha <- as.numeric(fecha)
     fecha <- as.POSIXct(fecha, origin = "1970-01-01")
@@ -72,14 +85,30 @@ submeneame <- function(sub, paginas, ruta = "~/extraccion.csv") {
     #  fecha <- fecha[1:25]
     #}
 
-    try(line <- data.frame(fecha, titulares, entradilla, meneos, clics, comments, positivos, negativos, anonimos, karma, user, links))
-    print(head(line))
-    write_csv(x = line, append = TRUE, ruta, col_names = FALSE)
+    # Creo la columna medio a partir de los links
 
+    medio <- links
+
+    medio <- str_remove_all(medio, "https://|http://|www.")
+
+    medio <- str_split(medio, pattern = "/", n = 2, simplify = TRUE)
+    medio <- medio[,1]
+
+    medio <- str_remove(medio, "apuntesdeclase.")
+    medio <- str_replace(medio, "20minutos.com", "20minutos.es")
+    medio <- str_replace(medio, "m.20minutos.es", "20minutos.es")
+    medio <- str_remove_all(medio, "es.noticias.|espanol.news.|finance.")
+
+    try(line <- data.frame(fecha, titulares, entradilla, meneos, clics, comments, positivos, negativos, anonimos, karma, user, medio, sub, links))
+    print(head(line))
+    write_csv(x = line, append = TRUE, path = ruta, col_names = FALSE)
 
     Sys.sleep(sample(x = 1:2, size = 1))  ## Duerme entre uno y tres segundos entre página y página
 
   }
+
+
+  meneos <<- read_csv(ruta)
 
   stop <- Sys.time()
 

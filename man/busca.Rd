@@ -4,14 +4,14 @@
 \alias{busca}
 \title{Scrapea las entradas resultantes de una búsqueda en meneame.com}
 \usage{
-busca(palabra, paginas, ruta = "~/extraccion.csv")
+busca(palabra, paginas, ruta = "~/meneame.csv")
 }
 \arguments{
 \item{palabra}{Character. Palabra(s) que se quiere buscar en meneame.net para scrapear. Importante no introducir más de un espacio entre palabras.}
 
 \item{paginas}{Numeric. Número de páginas que se quieren scraper de los resultados de la búsqueda. Como máximo 40.}
 
-\item{ruta}{Character. Ruta en el ordenador donde se quiere el csv.}
+\item{ruta}{Character. Ruta en el ordenador donde se quiere el csv. Por defecto se guardará un csv llamado meneame.csv en el directorio de trabajo.}
 }
 \value{
 Un csv que se guarda en la ruta indicada.

@@ -2,11 +2,11 @@ Package: meneaRme
 Type: Package
 Title: Web scraper para el agregador de noticias meneame.net
 Version: 0.1.0
-Author: Héctor Meleiro
+Authors@R: person("Héctor", "Meleiro", email = "hmeleiros@gmail.com",
+  role = c("aut", "cre"))
 Description: Permite scrapear la portada, los subs o los resultados de una búsqueda por palabras del portal meneame.net
-License: MIT
+License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
-Imports: Rcpp (>= 0.12.16), httr, readr, rvest, stringr
-LinkingTo: Rcpp
+Imports: httr, readr, rvest, stringr, xml2
 RoxygenNote: 6.0.1

@@ -4,14 +4,14 @@
 \alias{submeneame}
 \title{Scrapea las entradas en un sub de meneame.com}
 \usage{
-submeneame(sub, paginas, ruta = "~/extraccion.csv")
+submeneame(sub, paginas, ruta = "~/meneame.csv")
 }
 \arguments{
 \item{sub}{Character. Sub de meneame.com que se quiere scrapear.}
 
 \item{paginas}{Numeric. Número de páginas que se quieren scraper. No pone más de la que haya.}
 
-\item{ruta}{Character. Ruta en el ordenador donde se quiere el csv.}
+\item{ruta}{Character. Ruta en el ordenador donde se quiere el csv. Por defecto se guardará un csv llamado meneame.csv en el directorio de trabajo.}
 }
 \value{
 Un csv que se guarda en la ruta indicada.
